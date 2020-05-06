@@ -20,14 +20,21 @@ public:
     explicit FourLevelHash(vector<int> v) {
         hashLevel = std::move(v);
 
-        vector<vector<vector<vector<vector<long long> > > > > table(hashLevel[0],
-                                                                    vector<vector<vector<vector<long long> > > >(
-                                                                            hashLevel[1],
-                                                                            vector<vector<vector<long long> > >(
-                                                                                    hashLevel[2],
-                                                                                    vector<vector<long long> >(
-                                                                                            hashLevel[3],
-                                                                                            vector<long long>(1)))));
+//        vector < vector<vector<vector<vector<long long>>>>> table(hashLevel[0],
+//                vector< vector<vector<vector<long long>>>> (hashLevel[1],
+//                        vector<vector<vector<long long>>> (hashLevel[2],
+//                                vector<vector<long long>> (hashLevel[3]))));
+
+        table = vector<vector<vector<vector<vector<long long> > > > >(hashLevel[0]);
+        for (int i = 0; i < hashLevel[0]; i++) {
+            table[i] = vector<vector<vector<vector<long long> > > >(hashLevel[1]);
+            for (int j = 0; j < hashLevel[1]; j++) {
+                table[i][j] = vector<vector<vector<long long> > >(hashLevel[2]);
+                for (int k = 0; k < hashLevel[2]; k++) {
+                    table[i][j][k] = vector<vector<long long> >(hashLevel[3]);
+                }
+            }
+        }
     }
 
     static int hashFunction(long long x, int hashNumber) {

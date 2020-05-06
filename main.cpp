@@ -20,7 +20,7 @@ int main() {
     int size = 100000000;
 
     for (auto i = 0; i < size; i++) {
-        cout << "Hello" << '\n';
+//        cout << "Hello" << '\n';
         auto temp = (long long) (dist(mt));
         H.insertItem(temp);
         H4.insertItem(temp);
