@@ -54,7 +54,7 @@ public:
 
     void displaySizes() {
         for (int i = 0; i < buckets; i++) {
-            cout << table[i].size() << '\n';
+            cout << i << "-->" << table[i].size() << '\n';
         }
     }
 

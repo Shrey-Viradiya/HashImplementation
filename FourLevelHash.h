@@ -48,6 +48,41 @@ public:
         int id4 = hashFunction(key, hashLevel[3]);
         table[id1][id2][id3][id4].push_back(key);
     }
+
+    void displaySizes() {
+        for (auto i = 0; i < hashLevel[0]; i++) {
+            for (auto j = 0; j < hashLevel[1]; j++) {
+                for (auto k = 0; k < hashLevel[2]; k++) {
+                    for (auto o = 0; o < hashLevel[3]; o++) {
+                        cout << i << "-->" << j << "-->" << k << "-->" << o << "-->" << table[i][j][k][o].size()
+                             << endl;
+                    }
+                }
+            }
+        }
+    }
+
+    void findNumber(long long key) {
+        int id1 = hashFunction(key, hashLevel[0]);
+        int id2 = hashFunction(key, hashLevel[1]);
+        int id3 = hashFunction(key, hashLevel[2]);
+        int id4 = hashFunction(key, hashLevel[3]);
+
+        int k = 0;
+        std::vector<long long>::iterator i;
+        for (i = table[id1][id2][id3][id4].begin(); i != table[id1][id2][id3][id4].end(); i++) {
+            k++;
+            if (*i == key)
+                break;
+        }
+
+        if (i != table[id1][id2][id3][id4].end()) {
+            cout << "Found the number in HashTable " << id1 << "-->" << id2 << "-->" << id3 << "-->" << id4 << "-->"
+                 << " at index " << k << '\n';
+        } else {
+            cout << "Not Found" << '\n';
+        }
+    }
 };
 
 #endif //HASHIMPLEMENTATION_FOURLEVELHASH_H

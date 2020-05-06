@@ -6,9 +6,9 @@
 
 
 int main() {
-    SingleHash H(7);
+    SingleHash H(37);
 
-    vector<int> primes = {5, 7, 11, 13};
+    vector<int> primes = {23, 29, 31, 37};
     FourLevelHash H4(primes);
 
     std::random_device rd;
@@ -19,20 +19,36 @@ int main() {
 
     int size = 100000000;
 
+    auto start1 = std::chrono::high_resolution_clock::now();
+
+    cout << "Allocating Items" << endl;
     for (auto i = 0; i < size; i++) {
-//        cout << "Hello" << '\n';
         auto temp = (long long) (dist(mt));
         H.insertItem(temp);
         H4.insertItem(temp);
     }
-    H.displaySizes();
+    cout << "Items Allocated" << endl;
+    auto stop1 = std::chrono::high_resolution_clock::now();
 
-    auto start = std::chrono::high_resolution_clock::now();
-    H.findNumber(H.getNumber(1000000, 3));
-    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration1 = std::chrono::duration_cast<std::chrono::seconds>(stop1 - start1);
+    cout << "Item Allocation Duration: " << duration1.count() << " seconds" << endl;
 
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    cout << duration.count() << endl;
+//    H.displaySizes();
+//    H4.displaySizes();
+
+    auto start2 = std::chrono::high_resolution_clock::now();
+    H.findNumber(H.getNumber(10000000, 3));
+    auto stop2 = std::chrono::high_resolution_clock::now();
+
+    auto duration2 = std::chrono::duration_cast<std::chrono::milliseconds>(stop2 - start2);
+    cout << "Single Hash Function completed searching in " << duration2.count() << " milliseconds" << endl;
+
+    auto start3 = std::chrono::high_resolution_clock::now();
+    H4.findNumber(H.getNumber(10000000, 3));
+    auto stop3 = std::chrono::high_resolution_clock::now();
+
+    auto duration3 = std::chrono::duration_cast<std::chrono::milliseconds>(stop3 - start3);
+    cout << "Four Level Hash Function completed searching in " << duration3.count() << " milliseconds" << endl;
 
     return 0;
 }
