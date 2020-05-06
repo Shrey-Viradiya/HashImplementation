@@ -10,5 +10,5 @@ Executing the project give the result shown below.
 
 ![output image](img/output.png)
 
-In the output you can see that finding a number in SingleHash took 42258 microseconds and finding the same number in FourLevelHash took 10 microseconds.
+In the output you can see that finding a number in SingleHash took 48728 microseconds and finding the same number in FourLevelHash took 7 microseconds.
 The difference is Huge. That's why multilevel hashing is quite more useful when dealing with a large amount of data
