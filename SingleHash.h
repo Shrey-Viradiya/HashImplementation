@@ -6,18 +6,18 @@
 #define HASHIMPLEMENTATION_SINGLEHASH_H
 
 #include <iostream>
-#include <list>
+#include <vector>
 
 using namespace std;
 
 class SingleHash {
     int buckets;
-    std::list<long long> *table;
+    std::vector<long long> *table;
 
 public:
     explicit SingleHash(int v) {
         buckets = v;
-        table = new list<long long>[buckets];
+        table = new vector<long long>[buckets];
     }
 
     void insertItem(long long key) {
@@ -28,7 +28,7 @@ public:
     void deleteItem(long long key) {
         int index = hashFunction(key);
 
-        std::list<long long>::iterator i;
+        std::vector<long long>::iterator i;
         for (i = table[index].begin(); i != table[index].end(); i++) {
             if (*i == key)
                 break;
@@ -61,7 +61,7 @@ public:
     void findNumber(long long key) {
         int index = hashFunction(key);
         int k = 0;
-        std::list<long long>::iterator i;
+        std::vector<long long>::iterator i;
         for (i = table[index].begin(); i != table[index].end(); i++) {
             k++;
             if (*i == key)

@@ -19,7 +19,7 @@ list
 /home/shrey/CLionProjects/HashImplementation/SingleHash.h
 iostream
 -
-list
+vector
 -
 
 /home/shrey/CLionProjects/HashImplementation/main.cpp

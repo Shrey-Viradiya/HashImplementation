@@ -40,15 +40,15 @@ int main() {
     H.findNumber(H.getNumber(10000000, 3));
     auto stop2 = std::chrono::high_resolution_clock::now();
 
-    auto duration2 = std::chrono::duration_cast<std::chrono::milliseconds>(stop2 - start2);
-    cout << "Single Hash Function completed searching in " << duration2.count() << " milliseconds" << endl;
+    auto duration2 = std::chrono::duration_cast<std::chrono::microseconds>(stop2 - start2);
+    cout << "Single Hash Function completed searching in " << duration2.count() << " microseconds" << endl;
 
     auto start3 = std::chrono::high_resolution_clock::now();
     H4.findNumber(H.getNumber(10000000, 3));
     auto stop3 = std::chrono::high_resolution_clock::now();
 
-    auto duration3 = std::chrono::duration_cast<std::chrono::milliseconds>(stop3 - start3);
-    cout << "Four Level Hash Function completed searching in " << duration3.count() << " milliseconds" << endl;
+    auto duration3 = std::chrono::duration_cast<std::chrono::microseconds>(stop3 - start3);
+    cout << "Four Level Hash Function completed searching in " << duration3.count() << " microseconds" << endl;
 
     return 0;
 }
