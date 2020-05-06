@@ -18,12 +18,14 @@ int main() {
     std::cout << "Hashing With Chaining!!" << std::endl;
 
     int size = 100000000;
-
+    long long find;
     auto start1 = std::chrono::high_resolution_clock::now();
 
     cout << "Allocating Items" << endl;
     for (auto i = 0; i < size; i++) {
         auto temp = (long long) (dist(mt));
+        if (i == 70000000)
+            find = temp;
         H.insertItem(temp);
         H4.insertItem(temp);
     }
@@ -37,14 +39,14 @@ int main() {
 //    H4.displaySizes();
 
     auto start2 = std::chrono::high_resolution_clock::now();
-    H.findNumber(H.getNumber(2000000, 3));
+    H.findNumber(find);
     auto stop2 = std::chrono::high_resolution_clock::now();
 
     auto duration2 = std::chrono::duration_cast<std::chrono::microseconds>(stop2 - start2);
     cout << "Single Hash Function completed searching in " << duration2.count() << " microseconds" << endl;
 
     auto start3 = std::chrono::high_resolution_clock::now();
-    H4.findNumber(H.getNumber(2000000, 3));
+    H4.findNumber(find);
     auto stop3 = std::chrono::high_resolution_clock::now();
 
     auto duration3 = std::chrono::duration_cast<std::chrono::microseconds>(stop3 - start3);
